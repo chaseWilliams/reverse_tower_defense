@@ -11,14 +11,13 @@ public class turret : MonoBehaviour {
     public float health = 20f;
     public float range = 10f;
     public float fire_rate = 3f;
-    public float damage = 2f;
+    public float barrel_length = 1.04f;
 
     private float shooting_countdown = 0;
     private Vector3 bullet_fire_offset;
 
     void Start() {
         part_to_rotate = transform.Find("Head");
-        bullet_fire_offset = new Vector3(0, 0, 1.04f);
     }
 
 	void Update()
@@ -44,7 +43,8 @@ public class turret : MonoBehaviour {
 	}
 
     void Shoot() {
-        Instantiate(bullet_prefab, part_to_rotate.transform.position + bullet_fire_offset, Quaternion.LookRotation(part_to_rotate.transform.forward));
+        Debug.Log(part_to_rotate.transform.position);
+        Instantiate(bullet_prefab, part_to_rotate.transform.position + part_to_rotate.transform.forward * barrel_length, Quaternion.LookRotation(part_to_rotate.transform.forward));
     }
 
     void UpdateTarget()
@@ -65,7 +65,6 @@ public class turret : MonoBehaviour {
 
         if (closest_enemy != null)
         {
-            Debug.Log("target found");
             target = closest_enemy.transform;
         }
         else

@@ -283,8 +283,8 @@ MonoBehaviour:
   rotate_speed: 100
   health: 20
   range: 30
-  fire_rate: 3
-  damage: 2
+  fire_rate: 0.125
+  barrel_length: 1.04
 --- !u!136 &136558587852292412
 CapsuleCollider:
   m_ObjectHideFlags: 1
